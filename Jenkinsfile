@@ -7,8 +7,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 git 'https://github.com/paulahakeem/app_final_project.git'
                 sh """
-                docker login -u ${USERNAME} -p ${PASSWORD}
                 docker build . -t paulahakeem/node-app:v2.0 --network host
+                docker login -u ${USERNAME} -p ${PASSWORD}
                 docker push paulahakeem/node-app:v1.0
                 """
                 }
