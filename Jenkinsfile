@@ -1,4 +1,4 @@
-pipeline {
+// pipeline {
   agent any
 
   stages {
@@ -25,11 +25,11 @@ pipeline {
       }
     }
 
-    stage('Deploy') {
+//     stage('Deploy') {
 
-      steps {
-        sh "docker run -d -p 8000:8000 paulahakeem/my_django_app"
-      }
-    }
-  }
-}
+//       steps {
+//         sh "docker run -d -p 8000:8000 paulahakeem/my_django_app"
+//       }
+//     }
+//   }
+// }
