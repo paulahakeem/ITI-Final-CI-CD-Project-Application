@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finalapp
+  namespace: backend-ns
+  labels:
+    app: finalapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: finalapp
+  template:
+    metadata:
+      labels:
+        app: finalapp
+    spec:
+      containers:
+        - name: backend
+          image: paulahakeem/node-app:v2.0
+          ports:
+            - name: httpport
+              containerPort: 3000
