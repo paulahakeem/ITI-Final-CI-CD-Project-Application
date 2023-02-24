@@ -17,7 +17,7 @@ pipeline {
          stage('CD') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                git 'https://github.com/mahmoud254/jenkins_nodejs_example'
+                git 'https://github.com/paulahakeem/app_final_project.git'
                 sh """
 
                 """
