@@ -16,8 +16,8 @@ pipeline {
         }
          stage('CD') {
             steps {
-                git 'https://github.com/paulahakeem/app_final_project.git'
-                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+//                 git 'https://github.com/paulahakeem/app_final_project.git'
+//                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 sh """
                 kubectl apply -f /var/jenkins_home/workspace/backend/deploy.yaml
 //                 kubectl apply -f /var/jenkins_home/workspace/backend/app-loadbalancer.yaml
