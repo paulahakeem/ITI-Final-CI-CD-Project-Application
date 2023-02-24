@@ -19,7 +19,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 git 'https://github.com/paulahakeem/app_final_project.git'
                 sh """
-                kubectl apply -f deploy.yaml
+                kubectl apply -f ./deploy.yaml
                 """
                 }
             }
