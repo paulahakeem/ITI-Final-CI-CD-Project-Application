@@ -20,7 +20,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 sh """
                 kubectl apply -f /var/jenkins_home/workspace/backend/deploy.yaml
-//                 kubectl apply -f /var/jenkins_home/workspace/backend/app-loadbalancer.yaml
+                kubectl apply -f /var/jenkins_home/workspace/backend/lb.yaml
                 """
                 }
             }
