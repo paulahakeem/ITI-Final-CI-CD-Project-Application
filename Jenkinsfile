@@ -5,7 +5,7 @@ pipeline {
         stage('CI') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                git 'https://github.com/mahmoud254/jenkins_nodejs_example'
+                git 'https://github.com/paulahakeem/app_final_project.git'
                 sh """
                 docker login -u ${USERNAME} -p ${PASSWORD}
                 docker build . -f dockerfile -t paulahakeem/node-app:v1.0 --network host
