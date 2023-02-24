@@ -1,35 +1,29 @@
 pipeline {
-  agent any
+    agent any
 
-  stages {
-    stage('Preparation') {
-      steps {
-        checkout scm
-      }
-    }
-
-    stage('Build image') {
-      steps {
-        sh 'docker build -t my_django_app:v1 .'
-      }
-    }
-
-    stage('Push image') {
-      }
-      steps {
-        withCredentials([usernamePassword(credentialsId: 'DOCKERHUB', usernameVariable: 'my_user', passwordVariable: 'my_pass')]) {
-          sh "docker login -u ${my_user} -p ${my_pass}"
-          sh "docker tag my_django_app paulahakeem/my_django_app:v1"
-          sh "docker push paulahakeem/my_django_app:v1"
+    stages {
+        stage('CI') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                git 'https://github.com/mahmoud254/jenkins_nodejs_example'
+                sh """
+                docker login -u ${USERNAME} -p ${PASSWORD}
+                docker build . -f dockerfile -t paulahakeem/node-app:v1.0
+                docker push shrouk20180287/node-app:v1.0
+                """
+                }
+            }
         }
-      }
+         stage('CD') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                git 'https://github.com/mahmoud254/jenkins_nodejs_example'
+                sh """
+                docker login -u ${USERNAME} -p ${PASSWORD}
+                docker run -d -p 3000:3000 paulahakeem/node-app:v1.0
+                """
+                }
+            }
+        }
     }
-
-//     stage('Deploy') {
-
-//       steps {
-//         sh "docker run -d -p 8000:8000 paulahakeem/my_django_app"
-//       }
-//     }
-//   }
-// }
+}
