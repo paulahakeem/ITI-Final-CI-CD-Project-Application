@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: paulahakeem/node-app:v2.0
+          image: paulahakeem/finalimage:v1
           ports:
             - name: httpport
               containerPort: 3000
