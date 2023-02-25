@@ -19,5 +19,4 @@ spec:
         - name: backend
           image: paulahakeem/finalimage:v1
           ports:
-            - name: httpport
               containerPort: 3000
