@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('CI') {
             steps {
-                git 'https://github.com/paulahakeem/app_final_project.git'
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 sh """
                 docker build . -f dockerfile -t paulahakeem/finalimage:v4 --network host
