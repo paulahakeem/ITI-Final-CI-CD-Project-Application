@@ -6,9 +6,9 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 sh """
-                docker build . -f dockerfile -t paulahakeem/finalimage:v5 --network host
+                docker build . -f dockerfile -t paulahakeem/finalimage:v6 --network host
                 docker login -u ${USERNAME} -p ${PASSWORD}
-                docker push paulahakeem/finalimage:v5
+                docker push paulahakeem/finalimage:v6
                 """
                 }
             }
