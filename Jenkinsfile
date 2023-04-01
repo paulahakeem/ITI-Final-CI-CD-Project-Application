@@ -8,7 +8,7 @@ pipeline {
                 sh """
                 docker build . -f dockerfile -t paulahakeem/finalimage:v5 --network host
                 docker login -u ${USERNAME} -p ${PASSWORD}
-                docker push paulahakeem/finalimage:v4
+                docker push paulahakeem/finalimage:v5
                 """
                 }
             }
